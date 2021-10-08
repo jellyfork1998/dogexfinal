@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Tracker</title>
+    <link rel="stylesheet" id="icos-fonts-css"
+        href="https://fonts.googleapis.com/css?family=Nunito%3A300%2C300i%2C400%2C400i%2C600%2C600i%2C700%2C700i%2C800%2C800i%2C900%2C900i%7CPoppins%3A100%2C100i%2C200%2C200i%2C300%2C300i%2C400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i%2C800%2C800i%2C900%2C900i%7CRoboto%3A300%2C400%2C600&amp;subset=latin%2Clatin-ext"
+        type="text/css" media="all">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" id="google-fonts-1-css">
+    <link rel="icon" href="/static/img/favicon2.png" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!----------for graph------>
+    <!-- <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script> -->
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v12.0"
+        nonce="62k9ZSsX"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .btn-primary {
+            color: #000000;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-bottom: .5rem;
+            border: 2px solid #ffffff !important;
+            border-color: #ef4d86;
+            background-color: #ffffff;
+        }
+
+        .btn-enter {
+            color: black;
+            border: 2px solid #ffffff !important;
+            background: #c8c8c8 !important;
+            font-weight: 800;
+        }
+
+        .btn-enter:hover {
+            background: #774c9d !important;
+        }
+
+        .btn-enter:focus {
+            border-color: #fdfbfc !important;
+            background: #774c9d !important;
+            box-shadow: none !important;
+            outline: 0 none !important;
+        }
+
+        input[type="text"] {
+            background-color: #000000 !important;
+        }
+
+        .input-group>.form-control {
+            background-color: #fff !important;
+            color: #000000;
+        }
+
+        textarea:focus,
+        input[type="text"]:focus,
+        .uneditable-input:focus {
+            border-color: #fffdfe !important;
+            box-shadow: none !important;
+            outline: 0 none !important;
+        }
+
+        .custom-toggler.navbar-toggler {
+            border-color: #000000 !important;
+            background-image: linear-gradient(to right, #080686 0%, #8224e3 100%);
+
+        }
+
+
+        .navbar .navbar-nav .nav-link:hover {
+
+            color: #8224e3 !important;
+        }
+    </style>
+
+</head>
+
+
+<body>
+    <div style="overflow-x: hidden;">
+
+
+        <nav class="navbar navbar-expand-xl navbar-dark bg-black">
+            <div class="container">
+                <img src="/static/img/DogeX-Headerstroke-1-min.png" class="nav-image nvimg" alt="example"
+                    onclick="document.location.href='https://projectdogex.com/'" />
+                <button class="custom-toggler navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mb-3  ">
+                        <li class="nav-item">
+                            <a class="nav-link active n_link_text text-white" aria-current="page"
+                                href="https://projectdogex.com/">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link n_link_text text-white" ;
+                                href="#">Tracker</a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link n_link_text text-white"
+                                href="https://projectdogex.com/#about">About</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link n_link_text text-white"
+                                href="https://projectdogex.com/#tokenomics">Tokenomics</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link n_link_text text-white"
+                                href="https://projectdogex.com/#roadmap">Roadmap</a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link n_link_text text-white" href="https://projectdogex.com/#whitepaper">Whitepaper</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link n_link_text text-white" href="https://projectdogex.com/contact/">Contact</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="btn buy_now"
+                                href="https://pancakeswap.finance/swap#/swap?outputCurrency=0xf57fcAB4E5B76fc49917f6AC11eac27E222ca111">
+                                Buy Now</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!--<button class="pancake-button" onclick="location.href=https://pancakeswap.finance/swap#/swap?inputCurrency=0xa16976133D3450f78766ECaa1d743621E237e1A5" style="background:red" type="button"> Buy on PancakeSwap</button>-->
+
+
+            </div>
+        </nav>
+
+        <section>
+            <div class="ticker-wrap">
+
+                <div class="ticker">
+                    {% for ticker in tickerlist: %}
+                    <div class="ticker__item">{{ ticker }}</div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+        </section>
+
+
+        <div class="bx d-flex justify-content-around flex-wrap py-2" style="background-color:#000;">
+
+
+
+            <div id="goldtwo" class="glow">
+                <span class="minor">GOLDEN</span>
+            </div>
+
+            <div style="z-index: 999;">
+                <div class="myview">
+                    <h4 class="text-white pt-2">Buy Tax</h4>
+                    <h4 id="slippagebuy" class="text-white pt-2"> </h4>
+
+                </div>
+            </div>
+            <div style="z-index: 999;">
+                <div class="myview">
+                    <h4 class="text-white pt-2">Sell Tax</h4>
+                    <h4 id="slippagesell" class="text-white pt-2"> </h4>
+                </div>
+            </div>
+            <div id="goldone" class="glow">
+                <span class="minor">HOUR</span>
+            </div>
+
+        </div>
+
+
+
+
+        <header id="home-section">
+            <div id="notecard" style="position: absolute">
+                <div class="signboard" style="margin-top: -100px;" >
+                    <div class="sign" style="margin-top: -100px;">Golden Hour Is Live!</div>
+                    <div class="strings"></div>
+                    <div class="pin top" ></div>
+                    <div class="pin left" ></div>
+                    <div class="pin right"></div>
+                  </div>
+                </div>
+           
+
+            <div class="home-inner container pb-3">
+                <div class="row mx-auto pb-5 " style="margin-top:-25px;">
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-12 text-white pt-4">
+
+                        <h1 class="n_check_reward">DogeX Tracker</h1>
+                        <h2 class="n_check_reward_sub">Paste your wallet address to check </h2>
+                        <div class="ms-auto">
+                            <img class="img-hide floating" src="/static/img/loghead.png" width=60% alt="moon">
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-lg-5 col-md-12 col-sm-12 col-12 ">
+                        <div class="card card-n" style="border-radius: 2rem; background-color:#774c9d;">
+                            <form class="px-4" action="{{ url_for('handle_data') }}" method="post">
+
+                                <label class="form-label pl-3 pt-3">Wallet Address</label>
+                                <div class="input-group"><input type="text" name="walletAddress" class="form-control"
+                                        tabindex="0" required value={{ contract_address }}>
+                                    <button class="btn btn-primary btn-enter " type="submit" tabindex="0">CHECK
+                                    </button>
+                                </div>
+
+
+                            </form>
+                            <div class=" text-center text-white" style="font-size:15px;padding-bottom:0px;"> USD
+                                Calculations are based on current BNB/USD prices
+                            </div>
+
+                            <form class="px-4 py-2">
+
+
+                                <label class="form-label pl-3">Current Tokens:</label>
+                                <button class="btn btn-primary text-start form-control" type="button" tabindex="0">
+                                    {{ total_token }}
+                                </button>
+
+
+                                <label class="form-label pl-3 ">Total Purchased till date</label>
+                                <button class="btn btn-primary text-start form-control" type="button" tabindex="0">
+                                    {{ total_purchased }}
+                                </button>
+
+
+                                <label class="form-label pl-3">Total Sold till date</label>
+
+                                <button class="btn btn-primary text-start form-control" type="button" tabindex="0">
+                                    {{ total_sold }}
+                                </button>
+
+
+                                <label class="form-label pl-3 ">Total Reflections Earned:</label>
+                                <button class="btn btn-primary text-start form-control" type="button" tabindex="0">
+                                    {{ bal_token }}
+                                </button>
+                                <small class="text-white">{{ remarks }}</small>
+
+                                <div class="row">
+                                    <div class="col-12 col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                                        <label class="form-label pl-3 ">Sell Limit(BNB):</label>
+                                        <button id="selllimit" class="btn btn-primary text-start form-control"
+                                            type="button" tabindex="0">
+
+                                        </button>
+                                    </div>
+                                    <div class="col-12 col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                                        <label class="form-label pl-3 ">Cool Down Time:</label>
+                                        <button id="selltime" class="btn btn-primary text-start form-control"
+                                            type="button" tabindex="0">
+
+                                        </button>
+                                    </div>
+                                </div>
+
+
+
+                            </form>
+                        </div>
+                    </div>
+                    
+
+                </div>
+
+               
+            </div>
+
+       
+
+            <section>
+                <div class="container-fluid p-4 pt-4" style="background-color:#100f10;">
+                    <div class="container" style="background-color:#100f10;">
+                        <!-- <div class="overlay-top"> -->
+                        <div class="row g-4 text-center ">
+
+                           <div class="col-xl-8 d-flex justify-content-around flex-wrap">
+                                <div class="card card-stats my-3">
+                                    <div class="card-title">
+                                        <h4 class="desc py-3">Current Price</h4>
+                                        <h2 class="text-white py-3">{{statlist[0]}}</h2>
+
+                                        <!-- <h2 class="text-white">{{statlist[0]}}<h2> -->
+                                    </div>
+                                </div>
+                            
+
+
+                            
+                                <div class="card card-stats my-3">
+                                    <div class="card-title">
+                                        <h4 class="desc py-3">Total Market Cap</h4>
+                                        <h2 class="text-white py-3">{{statlist[1]}}</h2>
+
+                                    </div>
+                                </div>
+                            
+
+
+
+                            
+                                <div class="card card-stats my-3">
+                                    <div class="card-title">
+                                        <h4 class="desc">Total Circulating Supply</h4>
+                                        <h2 id="circ_supply" class="text-white py-3">{{statlist[5]}} ({{statlist[6]}}) ({{statlist[7]}}%)
+                                        </h2>
+
+
+                                    </div>
+                                </div>
+                            
+
+
+                          
+                                <div class="card card-stats my-3">
+                                    <div class="card-title">
+                                        <h4 class="desc">Total Burn</h4>
+                                        <h2 class="text-white py-3">{{statlist[2]}} ({{statlist[4]}})%</h2>
+
+                                    </div>
+                                </div>
+                            
+
+
+
+                            
+                                <div class="card card-stats my-3">
+                                    <div class="card-title">
+                                        <h4 class="desc">Total Liquidity</h4>
+                                        <h2 class="text-white py-3">{{statlist[8]}}</h2>
+
+                                    </div>
+                                </div>
+                            
+
+
+                          
+                                <div class="card card-stats my-3">
+                                    <div class="card-title ">
+                                        <h4 class="desc">Holders</h4>
+                                        <h2 class="text-white py-3">{{statlist[10]}}</h2>
+
+                                    </div>
+                                </div>
+                            </div>        
+                            
+
+                            <div class="col-12 col-lg-4, col-md-12 col-sm-12 col-xl-4 text-center">
+                                <iframe  id="poo" src="https://poocoin.app/embed-swap"  height="630"></iframe>
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+            <!-- <div class="row">
+                        <div class="col-lg-12 text-white text-center">
+        
+                            <div class="card card-5 m-3 p-2" style="background-color: #774c9d;">
+                                <div class="card-title stat-font ">
+                                    <div id="pie" style="height: 700px"></div>
+        
+                                </div>
+                            </div>
+        
+        
+                        </div>
+        
+                        <div class="col-lg-6 text-white text-center">
+                            <div class="row">
+                                <div class="col-lg-12 text-white text-center">
+        
+                                    <div class="card card-5 mt-3 " style="background-color: #774c9d;margin-right:25px;">
+                                        <div class="card-title stat-font ">
+                                            <div id="pie3" style="height: 348px"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 text-white text-center">
+                                        <div class="card card-5 mt-1" style="background-color: #774c9d;">
+        
+                                            <div class="card-title stat-font ">
+                                                <div id="pie3" style="height: 348px"></div>
+                                            </div>
+        
+        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+        
+                        </div>
+                    </div> -->
+            <!--Section Social Media----------------------->
+
+
+            <section class="soc-media">
+
+
+                <div class="row pt-5 mx-5 py-5 gx-4 d-flex justify-content-around text-center">
+
+
+
+                </div>
+                <!-------------------------------------------------------------------------------------------------------------------------->
+                <div class="row py-5 align-content-center">
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 col-xl-6">
+
+
+                        <div class="card  card-5 text-center twitter-card"
+                            style="background-color:#774c9d; border-radius:2em;" ;>
+
+                            <div class="card-body">
+                                <img src="/static/img/twit.png" alt="twitter" style="width:25%">
+
+                                <a class="twitter-timeline" data-lang="en" data-width="500" data-height="500"
+                                    data-theme="light"
+                                    href="https://twitter.com/dogexofficial?ref_src=twsrc%5Etfw">Tweets
+                                    by
+                                    dogexofficial</a>
+                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12  col-md-12 col-sm-12 col-12  col-xl-6">
+                        <div class=" card px-1 card-5 text-center facebook-card"
+                            style="background-color:#774c9d; border-radius:2em;">
+                            <div class="card-body">
+                                <img src="/static/img/fb.png" alt="twitter" style="width:25%">
+
+
+                                <div class="fb-page" data-href="https://www.facebook.com/ProjectDogeX"
+                                    data-tabs="timeline" data-width="500" data-height="500" data-small-header="true"
+                                    data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                                    <blockquote cite="https://www.facebook.com/ProjectDogeX"
+                                        class="fb-xfbml-parse-ignore">
+                                        <a href="https://www.facebook.com/ProjectDogeX">Project DogeX</a>
+                                    </blockquote>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+    </section>
+
+    </header>
+
+
+    <section>
+        <footer style="background-color: #100f10;">
+            <div class="container-fluid ">
+                <div class="text-center pt-3">
+                    <img src="/static/img/DogeX-FooterStroke-min.png" width=30% alt="example"
+                        onclick="document.location.href='https://projectdogex.com/'" />
+
+                </div>
+
+                <div class="container">
+                    <div class="row" style="padding-top: 80px;">
+                        <!-- <div class="col-lg-6">
+                            <p style="margin-bottom: 0%;">Sugarland</p>
+                            <p style="margin-bottom: 0%;">Theme coin with utility</p>
+                            <p style="margin-bottom: 0%;">Trading on Binance Smart Chain</p>
+                        </div>
+                        <div class="col-lg-6 text-end">
+                            <p style="margin-bottom: 0%;">Get in touch</p>
+                            <p style="margin-bottom: 0%;">info@sugarlandcoin.com</p>
+                            <p style="margin-bottom: 0%;">marketing@sugarlandcoin.com</p>
+                        </div> -->
+
+                        <div class="col-lg-12 text-center">
+                            <!-- Using font awesome icons -->
+                            <a href="https://t.me/projectdogex" class="fa fa-telegram" style="padding-top: 60px;"></a>
+                            <a href="https://www.instagram.com/projectdogex/" class="fa fa-instagram"></a>
+                            <a href="https://twitter.com/dogexofficial?s=21" class="fa fa-twitter"></a>
+                            <a href="https://www.youtube.com/channel/UCemByi8cdWT9246H235UOcw/featured"
+                                class="fa fa-youtube"></a>
+                            <a href="https://www.facebook.com/ProjectDogeX" class="fa fa-facebook"></a>
+                            <p class="text-white">Copyright © 2021 DogeX. All rights reserved - DogeX is not an
+                                investment and created as a meme parody like doge.
+                                DogeX makes no promises and is not responsible for any losses or errors use at your own
+                                risk. DogeX is not affiliated with DogeCoin.</p>
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+-->
+
+
+    </div>
+</body>
+
+<script>
+ window.onload = dofirst();
+
+ function dofirst(){
+    document.getElementById("goldone").style.display = "none";
+    document.getElementById("goldtwo").style.display = "none";
+    document.getElementById("notecard").style.display = "none";
+     var gold_buy='{{ gold_json["gold_buy"] }}'
+     var gold_sell='{{ gold_json["gold_sell"] }}'
+     var stlimit= '{{ gold_json["gold_sell_limit"] }}'
+     var timelimit = '{{ gold_json["gold_time_limit"] }}'
+
+    document.getElementById('slippagebuy').innerHTML = '{{ gold_json["gold_buy"] }}' + " %";
+    document.getElementById('slippagesell').innerHTML = '{{ gold_json["gold_sell"] }}' + " %";
+    document.getElementById('selllimit').innerHTML = '{{ gold_json["gold_sell_limit"] }}';
+    document.getElementById('selltime').innerHTML = secondsToHms(parseInt(timelimit));
+<!--    document.getElementById('selltime').innerHTML = secondsToHms(2520);-->
+    getCsupply();
+    showGoldenHours(parseInt(gold_sell),parseInt(gold_buy));
+
+ }
+
+function getCsupply() {
+
+var c_supplyone= '{{statlist[5]}}' ;
+var c_supplytwo= '{{statlist[6]}}' ;
+var c_supplythree= '{{statlist[7]}}' ;
+if(c_supplytwo.length>15) {
+ document.getElementById('circ_supply').innerHTML = c_supplyone + " (" + c_supplythree + "%)"
+} else {
+document.getElementById('circ_supply').innerHTML = c_supplyone + " ( "+c_supplytwo+" )" +"(" + c_supplythree + "%)"
+}
+
+}
+
+
+    setInterval(() => {
+    gdat();
+    }, 10000);
+
+ function gdat() {
+   fetch('/suggestions')
+  .then(response => response.json())
+  .then(data =>
+    updateField(data["gold_buy"],data["gold_sell"],data["gold_sell_limit"], data["gold_time_limit"])
+    );
+ }
+
+ function updateField(goldbuy, goldsell, goldselllimit,goldtimelimit) {
+ document.getElementById('slippagebuy').innerHTML = goldbuy + " %";
+ document.getElementById('slippagesell').innerHTML = goldsell + " %";
+ document.getElementById('selllimit').innerHTML = goldselllimit;
+ document.getElementById('selltime').innerHTML = secondsToHms(parseInt(goldtimelimit));
+ showGoldenHours(parseInt(goldsell),parseInt(goldbuy));
+
+ }
+
+
+
+    function secondsToHms(d) {
+      var x= setInterval(() => {
+      d=d-1;
+      
+      d = Number(d);
+      if(d>=0){
+        var h = Math.floor(d / 3600);
+        var m = Math.floor(d % 3600 / 60);
+        var s = Math.floor(d % 3600 % 60);
+
+        //var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+        //var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
+        //var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+        //return hDisplay + mDisplay + sDisplay; 
+        document.getElementById('selltime').innerHTML = h +" Hrs : " + m +" Min : " +s + " Sec"
+        //return h +" Hrs : " + m +" Min : " +s + " Sec"
+
+      }
+      else {
+        document.getElementById('selltime').innerHTML = "YOU CAN SELL NOW"
+      } 
+
+
+    }, 1000);
+ 
+}
+
+
+
+    function getValueFromSlippage() {
+       {% if gold_buy %}
+        document.getElementById('slippagebuy').innerHTML = '{{ gold_buy }}' + " %"
+        {% endif %}
+        {% if gold_sell %}
+        document.getElementById('slippagesell').innerHTML = '{{ gold_sell }}' + " %"
+        {% endif %}
+        showGoldenHours(myObj.sell,myObj.buy);
+
+
+    }
+
+    function getValueFromSellLimit() {
+        {% if gold_buy %}
+        document.getElementById('selllimit').innerHTML = '{{ gold_sell_limit }}'
+        {% endif %}
+        {% if gold_sell %}
+        document.getElementById('selltime').innerHTML = secondsToHms('{{ gold_time_limit }}')
+        secondsToHms(parseInt('{{ gold_time_limit }}'))
+         {% endif %}
+
+
+    }
+
+
+
+    function showGoldenHours(sell,buy){
+
+        
+        if( parseInt(buy)===0){
+            document.getElementById("goldone").style.display = "block";
+            document.getElementById("goldtwo").style.display = "block";
+            document.getElementById("notecard").style.display = "block";
+            
+        } else {
+            document.getElementById("goldone").style.display = "none";
+            document.getElementById("goldtwo").style.display = "none";
+            document.getElementById("notecard").style.display = "none";
+        }
+    }
+
+
+</script>
+
+</html>
