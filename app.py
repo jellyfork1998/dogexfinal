@@ -440,5 +440,14 @@ def suggestions():
     return jsonify(gd)
 
 
+@app.route('/loadholdersdatajdi38j92hdor9/<int:id>', methods=["GET"])
+def loadholdersdatajdi38j92hdor9(id):
+    coin_id = 1
+    ticker_update = TickerInfo.query.get(coin_id)
+    ticker_update.holder_count = id
+    db.session.commit()
+    return str(coin_id)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
