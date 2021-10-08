@@ -24,15 +24,15 @@ COIN_NAME = "DogeX"  # dogeXURI
 
 # for heroku database connection
 # ---------------------------------------------------------------------------------------
-uri = os.getenv("HEROKU_POSTGRESQL_WHITE_URL")  # or other relevant config var
-if uri.startswith("postgres://"):
-  uri = uri.replace("postgres://", "postgresql://", 1)
+#uri = os.getenv("HEROKU_POSTGRESQL_WHITE_URL")  # or other relevant config var
+#if uri.startswith("postgres://"):
+#  uri = uri.replace("postgres://", "postgresql://", 1)
 #trial=postgres://tkulhtivowimmt:67dc95fdb97225eb208332b2a6a5dd5c71a4dde2f529a93819094b2b50efad4f@ec2-34-197-135-44.compute-1.amazonaws.com:5432/d262010vvoqtj8
 # -----------------------------------------------------------------------
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = uri    # need to uncomment when connect to database
 #
-#app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///dogexdb.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///dogexdb.db"
 # Optional: But it will silence the deprecation warning in the console.
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # app.secret_key=os.environ.get('SECRETKEY')
